@@ -1,8 +1,8 @@
-import Paragraph from '@/ui/paragraph';
 import type { Metadata } from 'next';
-import LargeHeading from './components/ui/large-heading';
 import Link from 'next/link';
 import Image from 'next/image';
+import LargeHeading from '@/ui/large-heading';
+import Paragraph from '@/ui/paragraph';
 
 export const metadata: Metadata = {
 	title: 'Similarity API | Home',
@@ -41,6 +41,7 @@ export default function Home() {
 							fill
 							src='/images/typewriter.png'
 							alt='typewriter'
+							sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
 						/>
 					</div>
 				</div>

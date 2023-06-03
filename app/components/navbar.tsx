@@ -5,9 +5,10 @@ import { buttonVariants } from '@/ui/button';
 import SignInButton from '@/components/sign-in-button';
 import SignOutButton from '@/components/sign-out-button';
 import ThemeToggle from '@/components/theme-toggle';
+import { authOptions } from '@/lib/auth';
 
 const Navbar = async () => {
-	const session = await getServerSession();
+	const session = await getServerSession(authOptions);
 	return (
 		<div
 			className='
@@ -31,8 +32,10 @@ const Navbar = async () => {
 		>
 			<div className='container max-w-7xl mx-auto w-full flex justify-between items-center'>
 				<Link
+					as='/'
 					href='/'
 					className={buttonVariants({ variant: 'link' })}
+					rel='stylesheet preload'
 				>
 					Text Compare
 				</Link>
@@ -43,8 +46,10 @@ const Navbar = async () => {
 				<div className='hidden md:flex gap-4'>
 					<ThemeToggle />
 					<Link
+						as='/documentation'
 						href='/documentation'
 						className={buttonVariants({ variant: 'ghost' })}
+						rel='stylesheet preload'
 					>
 						Documentation
 					</Link>
@@ -52,8 +57,10 @@ const Navbar = async () => {
 					{session ? (
 						<>
 							<Link
+								as='/dashboard'
 								href='/dashboard'
 								className={buttonVariants({ variant: 'ghost' })}
+								rel='stylesheet preload'
 							>
 								Dashboard
 							</Link>

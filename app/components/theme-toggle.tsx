@@ -1,9 +1,13 @@
 'use client';
 
 import { useTheme } from 'next-themes';
-import { DropdownMenu, DropdownMenuTrigger } from './ui/dropdown-menu';
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuTrigger,
+} from '@/ui/dropdown-menu';
 import Button from '@/ui/button';
-import { DropdownMenuContent, DropdownMenuItem } from '@/ui/dropdown-menu';
 import { Icons } from '@/ui/icons';
 
 interface ThemeToggleProps {}

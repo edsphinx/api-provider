@@ -1,11 +1,9 @@
 import '@/styles/globals.css';
-import { Inter } from 'next/font/google';
-import { cn } from '@/lib/utils';
 import Providers from '@/components/providers';
 import Navbar from '@/components/navbar';
 import { Toaster } from '@/ui/toast';
-
-const inter = Inter({ subsets: ['latin'] });
+import ClientOnly from '@/components/client-only';
+import { font } from '@/lib/font';
 
 export default function RootLayout({
 	children,
@@ -13,17 +11,16 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html
-			lang='en'
-			className={cn('bg-white text-slate-900 antialiased', inter.className)}
-		>
-			<body className='min-h-screen bg-slate-50 dark:bg-slate-900 antialiased'>
-				<Providers>
-					{children}
-					<Toaster position='bottom-right' />
-					{/* @ts-expect-error Server Component */}
-					<Navbar />
-				</Providers>
+		<html lang='en'>
+			<body className={font.className}>
+				<ClientOnly>
+					<Providers>
+						{/* @ts-expect-error Server Component */}
+						<Navbar />
+						<Toaster position='bottom-right' />
+					</Providers>
+				</ClientOnly>
+				<main>{children}</main>
 				{/* Allow for more height on mobile devices */}
 				<div className='h-40 md:hidden'></div>
 			</body>
